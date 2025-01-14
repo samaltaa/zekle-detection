@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import cv2
 import numpy as np
+from numpy import linalg as LA
 
 # load the pre-trained FaceNet model
 model = load_model('facenet_keras.h5')
@@ -26,5 +27,23 @@ def get_face_embedding(model, image_path):
 
     return embedding
 
+def compare_faces(embedding1, embedding2, threshold=0.5):
+
+    distance = LA.norm(embedding1 - embedding2)
+
+    if distance < threshold:
+        print("Face Matched")
+    else:
+        print("Faces are different.")
+
+    return distance
+
+embedding1 = get_face_embedding("<images>")
+
+embedding2 = get_face_embedding("<images>")
+
+distance = compare_faces(embedding1, embedding2)
+
+print(f"Euclidean Distance: {distance}")
 
 
