@@ -18,5 +18,13 @@ def preprocess_image(image_path):
 
     return img
 
+def get_face_embedding(model, image_path):
+
+    img = preprocess_image(image_path)
+
+    embedding = model.predict(img)
+
+    return embedding
+
 
 
