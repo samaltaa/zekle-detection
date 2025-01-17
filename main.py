@@ -1,15 +1,15 @@
 # import required  libraries
-import cv2
 from ultralytics import YOLO
 import face_recognition
-import numpy as np
 import os
+#custom helpers
+from helpers.helpers import *
 
 # initiate the YOLO pre-trained model
-model = YOLO('yolov8n.pt')
+model = YOLO('models/yolov8n.pt')
 
 # define the faces that will be encoded
-known_faces_dir = 'known_faces'
+known_faces_dir = 'data'
 
 # empty arrays to store facial landmarks data
 known_face_encodings = []
